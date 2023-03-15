@@ -56,7 +56,7 @@ public class ObraLiterariaController extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmiExcluir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("...::: Cadastrar Obra :::...");
@@ -194,18 +194,23 @@ public class ObraLiterariaController extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
+        jMenu1.setText("Arquivo");
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
-
-        jMenuItem1.setText("Excluir Obra Literária");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenu2.setText("Editar");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenu2ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+
+        jmiExcluir.setText("Excluir Obra Literária");
+        jmiExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiExcluirActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiExcluir);
 
         jMenuBar1.add(jMenu2);
 
@@ -403,28 +408,24 @@ public class ObraLiterariaController extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jmiExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiExcluirActionPerformed
         // TODO add your handling code here:
-        int ob = Integer.parseInt(JOptionPane.showInputDialog("Informe o Id da Obra Literária que deseja excluir"));
+        int ob = Integer.parseInt(JOptionPane.showInputDialog("Informe o Id da "
+                + "Obra Literária que deseja excluir"));
         ObraLiterariaService obraLiterariaService = new ObraLiterariaService();
         ObraLiteraria obraLiteraria = obraLiterariaService.buscarObraLiteraria(ob);
-        if (obraLiteraria != null) {
-            int resp = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja excluir este registro?\n"
-                    + obraLiteraria.getTitulo() + " de " + obraLiteraria.getAutor());
-            if (resp == 0) {
-                obraLiterariaService.excluirObraLiteraria(obraLiteraria);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Não existe registro com esse ID");
-        }
-
-
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        obraLiterariaService.excluirObraLiteraria(obraLiteraria);
+        
+    }//GEN-LAST:event_jmiExcluirActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2ActionPerformed
 
     private ObraLiteraria lerCampos() {
         int id = Integer.parseInt(jtfId.getText());
@@ -501,10 +502,10 @@ public class ObraLiterariaController extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JButton jbSalvar;
+    private javax.swing.JMenuItem jmiExcluir;
     private javax.swing.JTextField jtfAnoDePublicacao;
     private javax.swing.JTextField jtfAutor;
     private javax.swing.JTextField jtfEditora;

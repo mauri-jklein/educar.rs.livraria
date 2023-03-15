@@ -35,6 +35,10 @@ public class ObraLiterariaService {
     public ObraLiteraria excluirObraLiteraria(ObraLiteraria obraLiteraria) {
         return obraLiterariaRepository.excluirObraLiteraria(obraLiteraria);
     }
+    
+    public List<ObraLiteraria> buscarObrasLiterarias(){
+        return obraLiterariaRepository.buscarObrasLiterarias();
+    }
 
     private boolean validaGenero(String genero) {
         List<String> generos = Arrays.asList("romance", "novela", "conto", "crônica", "poema", "canção", "drama");

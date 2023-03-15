@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -119,6 +121,28 @@ public class ObraLiterariaRepository {
         }
         JOptionPane.showMessageDialog(null, "Registro excluido com sucesso!");
         return obraLiteraria;
+    }
+    
+    public List<ObraLiteraria> buscarObrasLiterarias() {
+        try {
+            String sql = "SELECT * FROM obra_literaria";
+            conn = util.conexao();
+            ppst = conn.prepareStatement(sql);
+            ResultSet rs = ppst.executeQuery();
+            List<ObraLiteraria> obrasLiterarias = new ArrayList<>();
+            while (rs.next()) {
+                ObraLiteraria obraLiteraria = new ObraLiteraria();
+                obraLiteraria = new ObraLiteraria(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4),
+                        rs.getInt(5), rs.getString(6), rs.getInt(7),
+                        rs.getString(8), rs.getBoolean(9), rs.getInt(10));
+                obrasLiterarias.add(obraLiteraria);
+            }
+            return obrasLiterarias;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível consultar o banco.");
+        }
+        return null;
     }
 
 }
