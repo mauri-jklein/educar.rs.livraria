@@ -145,4 +145,21 @@ public class ObraLiterariaRepository {
         return null;
     }
 
+    public boolean editarConjuntoDeRegistros(String antigo, String novo) {
+        conn = util.conexao();
+        String sql = "UPDATE obra_literaria SET autor = ? where autor = ?";
+        try {
+            ppst = conn.prepareStatement(sql);
+            ppst.setString(1, novo);
+            ppst.setString(2, antigo);
+            System.out.println(ppst);
+            ppst.executeUpdate();
+            ppst.close();
+            conn.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível atualizar os dados. " + ex);
+        }
+
+        return true;
+    }
 }

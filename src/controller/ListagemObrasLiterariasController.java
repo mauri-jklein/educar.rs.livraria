@@ -41,26 +41,6 @@ public class ListagemObrasLiterariasController extends javax.swing.JFrame {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    private void configurarLarguraColunas(){
-        jtListaObras.getColumnModel().getColumn(0).setPreferredWidth(10);
-        jtListaObras.getColumnModel().getColumn(1).setPreferredWidth(190);
-        jtListaObras.getColumnModel().getColumn(2).setPreferredWidth(190);
-        jtListaObras.getColumnModel().getColumn(3).setPreferredWidth(190);
-        jtListaObras.getColumnModel().getColumn(4).setPreferredWidth(20);
-        jtListaObras.getColumnModel().getColumn(5).setPreferredWidth(40);
-        jtListaObras.getColumnModel().getColumn(6).setPreferredWidth(50);
-        jtListaObras.getColumnModel().getColumn(7).setPreferredWidth(50);
-        jtListaObras.getColumnModel().getColumn(8).setPreferredWidth(50);
-        jtListaObras.getColumnModel().getColumn(9).setPreferredWidth(50);
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.

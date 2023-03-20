@@ -39,6 +39,10 @@ public class ObraLiterariaService {
     public List<ObraLiteraria> buscarObrasLiterarias(){
         return obraLiterariaRepository.buscarObrasLiterarias();
     }
+    
+     public boolean editarConjuntoDeRegistros( String antigo, String novo) {
+         return obraLiterariaRepository.editarConjuntoDeRegistros(antigo, novo);
+     }
 
     private boolean validaGenero(String genero) {
         List<String> generos = Arrays.asList("romance", "novela", "conto", "crônica", "poema", "canção", "drama");
